@@ -4,7 +4,13 @@ import { bindActionCreators } from 'redux';
 import { Creators as UserActions } from '~/store/ducks/user';
 
 import {
-  Container, ImageBG, FormContainer, FormField, ImageLogo,
+  Container,
+  ImageBG,
+  FormContainer,
+  FormField,
+  ImageLogo,
+  LoginButton,
+  TextButton,
 } from './styles';
 
 const Login = ({ user }) => (
@@ -14,6 +20,9 @@ const Login = ({ user }) => (
       <ImageLogo />
       <FormField name="email" placeholder="Type your email..." keyboardType="email-address" />
       <FormField name="password" placeholder="Type your password..." />
+      <LoginButton>
+        <TextButton>Login</TextButton>
+      </LoginButton>
     </FormContainer>
   </Container>
 );

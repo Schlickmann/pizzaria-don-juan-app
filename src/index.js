@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 
 import './config/ReactotronConfig';
@@ -6,14 +7,17 @@ import './config/DevToolsConfig';
 
 import store from './store/index.js';
 
-import Login from '~/components/Login';
+import Routes from './routes';
 
 console.tron.log('hey');
 
 const App = () => (
-  <Provider store={store}>
-    <Login />
-  </Provider>
+  <>
+    <StatusBar backgroundColor="transparent" translucent barStyle="light-content" />
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  </>
 );
 
 export default App;

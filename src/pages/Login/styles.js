@@ -9,6 +9,7 @@ export const Container = styled.View`
   height: ${Dimensions.get('screen').height};
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const ImageBG = styled.Image.attrs({
@@ -25,22 +26,45 @@ export const ImageBG = styled.Image.attrs({
 export const ImageLogo = styled.Image.attrs({
   source: Logo,
 })`
-  height: 64px;
-  width: 64px;
-  margin-bottom: 25px;
+  height: 72px;
+  width: 72px;
+  margin-bottom: 30px;
 `;
 
 export const FormContainer = styled.View`
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
   margin: 30px;
+  border: 1px solid #000;
 `;
-export const FormField = styled.TextInput`
-  height: 40px;
+export const FormField = styled.TextInput.attrs({
+  placeholderTextColor: '#999',
+})`
+  height: 48px;
+  width: 100%;
   margin-bottom: 10px;
   background: #fff;
   border: none;
   border-radius: 8px;
   padding-left: 15px;
+  font-size: 16px;
+`;
+
+export const LoginButton = styled.TouchableOpacity`
+  background: #e5283e;
+  height: 48px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+`;
+
+export const TextButton = styled.Text`
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
 `;
