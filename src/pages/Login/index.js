@@ -32,7 +32,13 @@ const Login = props => (
           secureTextEntry
           onChangeText={value => props.setUserPassword(value)}
         />
-        <LoginButton onPress={() => props.navigation.navigate('Products')}>
+        <LoginButton
+          onPress={() => props.signInRequest(
+            { email: props.user.email, password: props.user.password },
+            props.navigation,
+          )
+          }
+        >
           <TextButton>Login</TextButton>
         </LoginButton>
         <LoginButton onPress={() => false} link>
