@@ -6,6 +6,7 @@ import { Creators as UserActions } from '~/store/ducks/user';
 import {
   Container,
   ImageBG,
+  KeyboardView,
   FormContainer,
   FormField,
   ImageLogo,
@@ -13,17 +14,32 @@ import {
   TextButton,
 } from './styles';
 
-const Login = ({ user }) => (
+const Login = props => (
   <Container>
     <ImageBG />
-    <FormContainer>
-      <ImageLogo />
-      <FormField name="email" placeholder="Type your email..." keyboardType="email-address" />
-      <FormField name="password" placeholder="Type your password..." />
-      <LoginButton>
-        <TextButton>Login</TextButton>
-      </LoginButton>
-    </FormContainer>
+    <KeyboardView behavior="padding" enabled>
+      <FormContainer>
+        <ImageLogo />
+        <FormField
+          name="email"
+          placeholder="Type your email..."
+          keyboardType="email-address"
+          onChangeText={value => props.setUserEmail(value)}
+        />
+        <FormField
+          name="password"
+          placeholder="Type your password..."
+          secureTextEntry
+          onChangeText={value => props.setUserPassword(value)}
+        />
+        <LoginButton onPress={() => props.navigation.navigate('Products')}>
+          <TextButton>Login</TextButton>
+        </LoginButton>
+        <LoginButton onPress={() => false} link>
+          <TextButton link>Sign Up for free</TextButton>
+        </LoginButton>
+      </FormContainer>
+    </KeyboardView>
   </Container>
 );
 

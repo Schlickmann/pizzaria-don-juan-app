@@ -37,10 +37,17 @@ export const FormContainer = styled.View`
   align-items: center;
   width: 80%;
   margin: 30px;
-  border: 1px solid #000;
 `;
+
+export const KeyboardView = styled.KeyboardAvoidingView`
+  width: 100%;
+`;
+
 export const FormField = styled.TextInput.attrs({
   placeholderTextColor: '#999',
+  autoCompleteType: 'off',
+  autoCapitalize: 'none',
+  autoCorrect: false,
 })`
   height: 48px;
   width: 100%;
@@ -53,7 +60,7 @@ export const FormField = styled.TextInput.attrs({
 `;
 
 export const LoginButton = styled.TouchableOpacity`
-  background: #e5283e;
+  background: ${props => (props.link ? 'transparent' : '#e5283e')};
   height: 48px;
   width: 100%;
   border: none;
@@ -65,6 +72,7 @@ export const LoginButton = styled.TouchableOpacity`
 
 export const TextButton = styled.Text`
   color: #fff;
-  font-size: 18px;
+  font-size: ${props => (props.link ? '16px' : '18px')};
   font-weight: bold;
+  margin-bottom: ${props => (props.link ? '10px' : '0px')};
 `;

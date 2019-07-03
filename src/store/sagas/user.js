@@ -19,3 +19,20 @@ export function* getSignUpRequest(action) {
     yield put(UserActions.signUpFailure('Something went wrong.'));
   }
 }
+
+export function* getSignInRequest(action) {
+  try {
+    const response = yield call(api, {
+      method: 'POST',
+      url: '/signin',
+      params: action.payload.data,
+    });
+
+    console.log(response);
+
+    yield put(UserActions.signInSuccess(response.data));
+  } catch (err) {
+    console.log(err);
+    yield put(UserActions.signInFailure('Something went wrong.'));
+  }
+}
