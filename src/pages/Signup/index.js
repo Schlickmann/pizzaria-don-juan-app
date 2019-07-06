@@ -18,6 +18,7 @@ import {
 } from './styles';
 
 const Login = ({ signInRequest, user }) => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,8 +26,8 @@ const Login = ({ signInRequest, user }) => {
     signInRequest({ email, password });
   }
 
-  function signUp() {
-    navigate('SignUp');
+  function signIp() {
+    navigate('Login');
   }
 
   return (
@@ -35,6 +36,12 @@ const Login = ({ signInRequest, user }) => {
       <KeyboardView behavior="padding" enabled>
         <FormContainer>
           <ImageLogo />
+          <FormField
+            name="name"
+            placeholder="Type your full name..."
+            value={name}
+            onChangeText={value => setName(value)}
+          />
           <FormField
             name="email"
             placeholder="Type your email..."
@@ -50,10 +57,10 @@ const Login = ({ signInRequest, user }) => {
             onChangeText={value => setPassword(value)}
           />
           <LoginButton onPress={handleSubmit}>
-            {user.loading ? <Spinner /> : <TextButton>Login</TextButton>}
+            {user.loading ? <Spinner /> : <TextButton>Sign Up</TextButton>}
           </LoginButton>
-          <LoginButton onPress={signUp} link>
-            <TextButton link>Sign Up for free</TextButton>
+          <LoginButton onPress={signIp} link>
+            <TextButton link>Already have an account</TextButton>
           </LoginButton>
         </FormContainer>
       </KeyboardView>

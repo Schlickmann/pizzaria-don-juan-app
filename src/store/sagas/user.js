@@ -1,7 +1,6 @@
 import { call, put } from 'redux-saga/effects';
-import { NavigationActions } from 'react-navigation';
 import api from '~/services/api';
-
+import { navigate } from '~/services/navigation';
 import { Creators as UserActions } from '../ducks/user';
 
 export function* getSignUpRequest(action) {
@@ -12,28 +11,23 @@ export function* getSignUpRequest(action) {
       data: action.payload.data,
     });
 
-    yield put(NavigationActions.navigate({ routeName: 'Products' }));
     yield put(UserActions.signUpSuccess(response.data));
   } catch (err) {
-    console.log(err);
     yield put(UserActions.signUpFailure('Something went wrong.'));
   }
 }
 
 export function* getSignInRequest(action) {
   try {
-    console.log(action);
     const response = yield call(api, {
       method: 'POST',
       url: '/signin',
       data: action.payload.data,
     });
 
-    console.log(response);
-
     yield put(UserActions.signInSuccess(response.data));
+    navigate('Products');
   } catch (err) {
-    console.log(err);
     yield put(UserActions.signInFailure('Something went wrong.'));
   }
 }

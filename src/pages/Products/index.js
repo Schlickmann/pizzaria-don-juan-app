@@ -9,6 +9,7 @@ class Products extends Component {
   };
 
   render() {
+    console.tron.log('hey');
     return (
       <View>
         <Text> prop </Text>

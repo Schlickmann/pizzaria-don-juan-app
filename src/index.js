@@ -8,35 +8,15 @@ import './config/DevToolsConfig';
 import store from './store/index.js';
 
 import Routes from './routes';
-
-console.tron.log('hey');
+import { setNavigator } from '~/services/navigation';
 
 const App = () => (
   <>
     <StatusBar backgroundColor="transparent" translucent barStyle="light-content" />
     <Provider store={store}>
-      <Routes />
+      <Routes ref={setNavigator} />
     </Provider>
   </>
 );
 
 export default App;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor: "#F5FCFF"
-//   },
-// text: {
-//   ...Platform.select({
-//     ios: {
-//       color: "#c5c"
-//     },
-//     android: {
-//       fontSize: 24
-//     }
-//   })
-// }
-// });

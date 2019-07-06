@@ -5,18 +5,12 @@ export const Types = {
   SIGN_IN_REQUEST: 'user/SIGN_IN_REQUEST',
   SIGN_IN_SUCCESS: 'user/SIGN_IN_SUCCESS',
   SIGN_IN_FAILURE: 'user/SIGN_IN_FAILURE',
-  SET_USER_NAME: 'user/SET_USER_NAME',
-  SET_USER_EMAIL: 'user/SET_USER_EMAIL',
-  SET_USER_PASS: 'user/SET_USER_PASS',
 };
 
 /**
  * Reducer
  */
 const INITIAL_STATE = {
-  name: '',
-  email: '',
-  password: '',
   loading: false,
   error: null,
   message: '',
@@ -75,7 +69,4 @@ export const Creators = {
     payload: { data },
   }),
   signInFailure: data => ({ type: Types.SIGN_IN_FAILURE, payload: { data } }),
-  setUserName: name => ({ type: Types.SET_USER_NAME, payload: { name } }),
-  setUserEmail: email => ({ type: Types.SET_USER_EMAIL, payload: { email } }),
-  setUserPassword: password => ({ type: Types.SET_USER_PASS, payload: { password } }),
 };
