@@ -76,7 +76,7 @@ const Routes = createAppContainer(
       Products,
     },
     {
-      initialRouteName: 'Login',
+      initialRouteName: 'Products',
       transitionConfig: NavigationConfig,
       defaultNavigationOptions: {
         header: null,

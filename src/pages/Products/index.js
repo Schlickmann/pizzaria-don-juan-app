@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { Creators as ProductActions } from '~/store/ducks/products';
 
+import { Container, ImageHeader, ContainerText } from './styles';
+
 const Products = ({ productsRequest }) => {
+  const statusBarHeight = getStatusBarHeight();
   useEffect(() => {
     productsRequest();
   }, []);
 
   return (
-    <View>
-      <Text> prop </Text>
-    </View>
+    <Container>
+      <ImageHeader />
+      <ContainerText statusBarHeight={statusBarHeight}>Juliani</ContainerText>
+    </Container>
   );
 };
 
