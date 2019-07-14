@@ -8,6 +8,5 @@ export function setNavigator(ref) {
 }
 
 export function navigate(routeName, params) {
-  console.tron.log('dispatch');
   navigator.dispatch(NavigationActions.navigate({ routeName, params }));
 }

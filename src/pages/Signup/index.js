@@ -17,17 +17,17 @@ import {
   Spinner,
 } from './styles';
 
-const Login = ({ signInRequest, user }) => {
+const Login = ({ signUpRequest, user }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function handleSubmit() {
-    signInRequest({ email, password });
+    signUpRequest({ name, email, password });
   }
 
-  function signIp() {
-    navigate('Login');
+  function signUp() {
+    navigate('Login', { transition: 'SlideFromBottom' });
   }
 
   return (
@@ -59,7 +59,7 @@ const Login = ({ signInRequest, user }) => {
           <LoginButton onPress={handleSubmit}>
             {user.loading ? <Spinner /> : <TextButton>Sign Up</TextButton>}
           </LoginButton>
-          <LoginButton onPress={signIp} link>
+          <LoginButton onPress={signUp} link>
             <TextButton link>Already have an account</TextButton>
           </LoginButton>
         </FormContainer>
@@ -69,7 +69,7 @@ const Login = ({ signInRequest, user }) => {
 };
 
 Login.propTypes = {
-  signInRequest: PropTypes.func.isRequired,
+  signUpRequest: PropTypes.func.isRequired,
   user: PropTypes.shape({ loading: PropTypes.bool }).isRequired,
 };
 

@@ -26,7 +26,7 @@ const Login = ({ signInRequest, user }) => {
   }
 
   function signUp() {
-    navigate('SignUp');
+    navigate('SignUp', { transition: 'SlideFromBottom' });
   }
 
   return (

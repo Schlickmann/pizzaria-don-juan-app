@@ -31,7 +31,7 @@ export default function user(state = INITIAL_STATE, action) {
       return {
         ...state,
         message: action.payload.message,
-        token: action.payload.token,
+        token: action.payload.data.token,
         loading: false,
       };
     case Types.SIGN_IN_FAILURE:
