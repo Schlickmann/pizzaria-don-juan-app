@@ -4,6 +4,7 @@ import { Animated, Easing } from 'react-native';
 import Login from './pages/Login';
 import SignUp from './pages/Signup';
 import Products from './pages/Products';
+import ProductTypes from './pages/ProductTypes';
 
 const SlideFromRight = (index, position, width) => {
   const translateX = position.interpolate({
@@ -74,9 +75,10 @@ const Routes = createAppContainer(
       Login,
       SignUp,
       Products,
+      ProductTypes,
     },
     {
-      initialRouteName: 'Products',
+      initialRouteName: 'Login',
       transitionConfig: NavigationConfig,
       defaultNavigationOptions: {
         header: null,

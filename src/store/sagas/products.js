@@ -22,3 +22,24 @@ export function* getProductsRequest() {
     yield put(ProductActions.productsFailure('Something went wrong.'));
   }
 }
+
+export function* setProductSelected(action) {
+  try {
+    // yield AsyncStorage.clear();
+    let products = yield AsyncStorage.getItem('@products');
+
+    if (!products) {
+      products = [];
+    } else {
+      products = JSON.parse(products);
+    }
+
+    products.push({ productId: action.payload.productId });
+
+    yield AsyncStorage.setItem('@products', JSON.stringify(products));
+
+    navigate('ProductTypes', { transition: 'SlideFromBottom' });
+  } catch (error) {
+    console.tron.log(error);
+  }
+}

@@ -4,7 +4,6 @@ let navigator;
 
 export function setNavigator(ref) {
   navigator = ref;
-  console.tron.log('ref preenchido');
 }
 
 export function navigate(routeName, params) {
