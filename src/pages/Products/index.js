@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { navigate } from '~/services/navigation';
 import { Creators as ProductActions } from '~/store/ducks/products';
 
+import Product from '~/components/Product';
 import {
   Container,
   ImageHeader,
@@ -14,15 +15,10 @@ import {
   ContainerText,
   HistoricButton,
   CartButton,
-  ProductButton,
-  ProductContainer,
-  TextContainer,
-  ProductText,
-  CookContainer,
-  ProductImage,
+  List,
 } from './styles';
 
-const Products = ({ productsRequest, productsSelected, products }) => {
+const Products = ({ productsRequest, products }) => {
   const statusBarHeight = getStatusBarHeight();
   useEffect(() => {
     productsRequest();
@@ -40,28 +36,18 @@ const Products = ({ productsRequest, productsSelected, products }) => {
           <Icon name="shopping-basket" color="#fff" size={20} />
         </CartButton>
       </ContainerHeader>
-      {products.data.map(product => (
-        <ProductButton key={product.id} onPress={() => productsSelected(product.id)}>
-          <ProductContainer>
-            <ProductImage imageUrl={`${product.image}`} />
-            <TextContainer>
-              <ProductText>{product.name}</ProductText>
-              <ProductText description>{product.description}</ProductText>
-              <CookContainer>
-                <Icon name="alarm" color="#c3c3c3" size={14} style={{ marginRight: 5 }} />
-                <ProductText cook_time>{product.cook_time}</ProductText>
-              </CookContainer>
-            </TextContainer>
-          </ProductContainer>
-        </ProductButton>
-      ))}
+      <List
+        keyboardShouldPersistTaps="handled"
+        data={products.data}
+        keyExtractor={item => String(item.id)}
+        renderItem={({ item }) => <Product data={item} />}
+      />
     </Container>
   );
 };
 
 Products.propTypes = {
   productsRequest: PropTypes.func.isRequired,
-  productsSelected: PropTypes.func.isRequired,
   products: PropTypes.shape({ loading: PropTypes.bool }).isRequired,
 };
 

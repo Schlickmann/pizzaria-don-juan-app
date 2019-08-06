@@ -1,16 +1,17 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
 import ImgHeader from '~/assets/images/header-background.png';
 
-export const Container = styled.ScrollView.attrs({
-  contentContainerStyle: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    flex: 1,
-  },
-})``;
+export const Container = styled(LinearGradient).attrs({
+  colors: ['#fff', '#d9d9d9'],
+  start: { x: 0, y: 0 },
+  end: { x: 1, y: 1 },
+})`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 
 export const ImageHeader = styled.Image.attrs({
   source: ImgHeader,
