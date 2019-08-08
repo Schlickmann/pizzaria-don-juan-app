@@ -25,7 +25,7 @@ export function* getProductsRequest() {
 
 export function* setProductSelected(action) {
   try {
-    // yield AsyncStorage.clear();
+    // yield AsyncStorage.removeItem('@products');
     let products = yield AsyncStorage.getItem('@products');
 
     if (!products) {

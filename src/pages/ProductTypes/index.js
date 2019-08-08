@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-import { navigate } from '~/services/navigation';
+// import { navigate } from '~/services/navigation';
 import { Creators as ProductTypeActions } from '~/store/ducks/productTypes';
 
+import ProductType from '~/components/ProductType';
+
 import {
-  Container,
-  ImageHeader,
-  ContainerHeader,
-  ContainerText,
-  ProductTypeButton,
-  ProductTypeContainer,
-  ProductTypeImage,
-  ProductTypeText,
+  Container, ImageHeader, ContainerHeader, ContainerText, List,
 } from './styles';
 
 const ProductTypes = ({ productTypesRequest, productTypes }) => {
@@ -23,9 +18,9 @@ const ProductTypes = ({ productTypesRequest, productTypes }) => {
     productTypesRequest();
   }, []);
 
-  function selectProductSize(id) {
-    navigate('ProductSizes', { transition: 'SlideFromBottom', productTypeId: id });
-  }
+  // function selectProductSize(id) {
+  //   navigate('ProductSizes', { transition: 'SlideFromBottom', productTypeId: id });
+  // }
 
   return (
     <Container>
@@ -33,14 +28,14 @@ const ProductTypes = ({ productTypesRequest, productTypes }) => {
       <ContainerHeader>
         <ContainerText statusBarHeight={statusBarHeight}>Select an option</ContainerText>
       </ContainerHeader>
-      {productTypes.data.map(type => (
-        <ProductTypeButton key={type.id}>
-          <ProductTypeContainer>
-            <ProductTypeImage imageUrl={`${type.image}`} />
-            <ProductTypeText>{type.name}</ProductTypeText>
-          </ProductTypeContainer>
-        </ProductTypeButton>
-      ))}
+
+      <List
+        keyboardShouldPersistTaps="handled"
+        data={productTypes.data}
+        keyExtractor={item => String(item.id)}
+        numColumns={2}
+        renderItem={({ item }) => <ProductType data={item} />}
+      />
     </Container>
   );
 };

@@ -2,6 +2,7 @@ export const Types = {
   PRODUCT_TYPES_REQUEST: 'productType/PRODUCT_TYPES_REQUEST',
   PRODUCT_TYPES_SUCCESS: 'productType/PRODUCT_TYPES_SUCCESS',
   PRODUCT_TYPES_FAILURE: 'productType/PRODUCT_TYPES_FAILURE',
+  PRODUCT_TYPES_SELECTED: 'productType/PRODUCT_TYPES_SELECTED',
 };
 
 /**
@@ -27,6 +28,8 @@ export default function user(state = INITIAL_STATE, action) {
       };
     case Types.PRODUCT_TYPES_FAILURE:
       return { ...state, error: action.payload.error, loading: false };
+    case Types.PRODUCT_TYPES_SELECTED:
+      return { ...state };
     default:
       return state;
   }
@@ -44,4 +47,8 @@ export const Creators = {
     payload: { data },
   }),
   productTypesFailure: data => ({ type: Types.PRODUCT_TYPES_FAILURE, payload: { data } }),
+  productTypesSelected: productTypeId => ({
+    type: Types.PRODUCT_TYPES_SELECTED,
+    payload: { productTypeId },
+  }),
 };

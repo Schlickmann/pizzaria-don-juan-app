@@ -6,7 +6,7 @@ import { Types as ProductTypeTypes } from '~/store/ducks/productTypes';
 
 import { getSignUpRequest, getSignInRequest } from './user';
 import { getProductsRequest, setProductSelected } from './products';
-import { getProductTypesRequest } from './productTypes';
+import { getProductTypesRequest, setProductTypeSelected } from './productTypes';
 
 export default function* rootSaga() {
   yield all([
@@ -15,5 +15,6 @@ export default function* rootSaga() {
     takeLatest(ProductTypes.PRODUCTS_REQUEST, getProductsRequest),
     takeLatest(ProductTypes.PRODUCTS_SELECTED, setProductSelected),
     takeLatest(ProductTypeTypes.PRODUCT_TYPES_REQUEST, getProductTypesRequest),
+    takeLatest(ProductTypeTypes.PRODUCT_TYPES_SELECTED, setProductTypeSelected),
   ]);
 }

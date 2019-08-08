@@ -8,9 +8,6 @@ export const Container = styled(LinearGradient).attrs({
   end: { x: 1, y: 1 },
 })`
   flex: 1;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 `;
 
 export const ImageHeader = styled.Image.attrs({
@@ -37,39 +34,11 @@ export const ContainerText = styled.Text`
   color: #fff;
 `;
 
-export const ProductTypeButton = styled.TouchableOpacity`
-  width: 45%;
-  margin: 5px;
-`;
-
-export const ProductTypeContainer = styled.View.attrs({
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 5 },
-  shadowOpacity: 0.1,
-  shadowRadius: 3,
-  elevation: 1,
+export const List = styled.FlatList.attrs({
+  contentContainerStyle: {
+    paddingHorizontal: 20,
+  },
+  showsVerticalScrollIndicator: false,
 })`
-  width: 100%;
-  background-color: #fff;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const ProductTypeImage = styled.Image.attrs(props => ({
-  source: { uri: props.imageUrl },
-}))`
-  height: 126px;
-  width: 130px;
-  margin: 10px;
-`;
-
-export const ProductTypeText = styled.Text`
-  font-size: 16px;
-  color: #0b2031;
-  letter-spacing: 0;
-  text-align: center;
+  margin-top: 20px;
 `;
