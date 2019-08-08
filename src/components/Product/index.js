@@ -16,7 +16,6 @@ import {
 } from './styles';
 
 function Product({ data, productsSelected }) {
-  console.tron.log('oi ', data);
   return (
     <ProductButton onPress={() => productsSelected(data.id)}>
       <ProductContainer>
